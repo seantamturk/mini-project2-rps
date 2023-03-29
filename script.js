@@ -22,9 +22,15 @@ function RPSGame(){
     var lossCount = 0;
     var tieCount = 0;
     if (moves.includes(playerMove)){
-        while (winCount < 3 || lossCount < 3){ 
-            if (!(winCount == 0 && lossCount == 0 && tieCount == 0))
-                var playerMove = prompt("Enter R, P or S (case sensitive).");   
+        while (winCount < 3 || lossCount < 3){
+            console.log("I'm looping.");
+            if (!(winCount == 0 && lossCount == 0 && tieCount == 0)){
+                console.log("Are we on our second game?");
+                console.log("WinCount" + winCount)
+                console.log("lossCount " + lossCount)
+                //Good luck consolelogs.
+                var playerMove = prompt("Enter R, P or S (case sensitive).");
+            }
         // computer picks r, p , or s
             var cpuRandIdx = Math.floor(Math.random() * moves.length);
             var cpuMove = moves[cpuRandIdx];
@@ -64,9 +70,12 @@ function RPSGame(){
             }
         }
 
-    } 
+        alert(`The finalscore: Wins: ${winCount} Losses: ${lossCount}, Ties: ${tieCount}`);
+        return;
+
+    }
     else {
-console.log("condition met")
+        console.log("condition met");
         return RPSGame();
     }
     //If the entered values does not = our moves, we display an alert box that says not a valid input. (Press OK to start over.)
