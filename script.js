@@ -22,20 +22,51 @@ function RPSGame(){
     var lossCount = 0;
     var tieCount = 0;
     if (moves.includes(playerMove)){
+        while (winCount < 3 || lossCount < 3){ 
+            if (!(winCount == 0 && lossCount == 0 && tieCount == 0))
+                var playerMove = prompt("Enter R, P or S (case sensitive).");   
+        // computer picks r, p , or s
+            var cpuRandIdx = Math.floor(Math.random() * moves.length);
+            var cpuMove = moves[cpuRandIdx];
+        // we compare our return value to the computers value
+            if (cpuMove === playerMove){
+                tieCount++
+            alert(`The score: Wins: ${winCount} Losses: ${lossCount}, Ties: ${tieCount}`)
+            }
+            else if (playerMove=="R" && cpuMove=="S"){
+                winCount++
+                alert(`The score: Wins: ${winCount} Losses: ${lossCount}, Ties: ${tieCount}`)
+            }
 
-    // computer picks r, p , or s
-    var cpuRandIdx = Math.floor(Math.random() * moves.length);
-    var cpuMove = moves[cpuRandIdx];
-    // we compare our return value to the computers value
-    if (cpuMove === playerMove){
-        tieCount++
-        alert(`The score: Wins: ${winCount} Losses: ${lossCount}, Ties: ${tieCount}`)
-    }
+            else if (playerMove=="P" && cpuMove=="R"){
+                winCount++
+                alert(`The score: Wins: ${winCount} Losses: ${lossCount}, Ties: ${tieCount}`)
+            }
 
+            else if (playerMove=="S" && cpuMove=="P"){
+                winCount++
+                alert(`The score: Wins: ${winCount} Losses: ${lossCount}, Ties: ${tieCount}`)
+            }
 
+            else if (cpuMove=="R" && playerMove=="S"){
+                lossCount++
+                alert(`The score: Wins: ${winCount} Losses: ${lossCount}, Ties: ${tieCount}`)
+            }
 
-    } else {
+            else if (cpuMove=="P" && playerMove=="R"){
+                lossCount++
+                alert(`The score: Wins: ${winCount} Losses: ${lossCount}, Ties: ${tieCount}`)
+            }
 
+            else if (cpuMove=="S" && playerMove=="P"){
+                lossCount++
+                alert(`The score: Wins: ${winCount} Losses: ${lossCount}, Ties: ${tieCount}`)
+            }
+        }
+
+    } 
+    else {
+console.log("condition met")
         return RPSGame();
     }
     //If the entered values does not = our moves, we display an alert box that says not a valid input. (Press OK to start over.)
